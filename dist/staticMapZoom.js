@@ -114,13 +114,7 @@ var StaticMapZoom = function (_React$Component) {
                     key: i,
                     className: 'staticMapZoom-zoomPane',
                     style: {
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        transition: 'opacity 0.2s ease',
-                        backgroundSize: '100%',
                         backgroundImage: 'url(' + url + ')',
-                        // zIndex: `${imgUrls.length - i}`,
                         opacity: i > _this4.state.visiblePane ? 0 : 1
                     }
                 });

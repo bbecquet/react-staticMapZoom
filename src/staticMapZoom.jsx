@@ -92,11 +92,6 @@ export default class StaticMapZoom extends React.Component {
                 key={i}
                 className="staticMapZoom-zoomPane"
                 style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    transition: 'opacity 0.2s ease',
-                    backgroundSize: '100%',
                     backgroundImage: `url(${url})`,
                     opacity: (i > this.state.visiblePane) ? 0 : 1
                 }}
