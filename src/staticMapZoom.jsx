@@ -9,7 +9,8 @@ export default class StaticMapZoom extends React.Component {
         provider: PropTypes.string,
         reticle: PropTypes.bool,
         height: PropTypes.number,
-        width: PropTypes.number
+        width: PropTypes.number,
+        apiKey: PropTypes.string
     };
 
     static defaultProps = {
@@ -42,7 +43,7 @@ export default class StaticMapZoom extends React.Component {
                 height: this.props.height,
                 lat: this.props.center[0],
                 lng: this.props.center[1],
-                apiKey: '[your_key_here]'
+                apiKey: this.props.apiKey
             };
             return providers[this.props.provider](opts);
         });
@@ -85,17 +86,17 @@ export default class StaticMapZoom extends React.Component {
 
     render() {
         const imgUrls = this.buildImageUrls();
-        imgUrls.reverse();
         const panes = imgUrls.map((url, i) =>
             <div
                 key={i}
                 className="staticMapZoom-zoomPane"
                 style={{
                     backgroundImage: `url(${url})`,
-                    opacity: (i > this.state.visiblePane) ? 0 : 1
+                    opacity: (i < this.state.visiblePane) ? 0 : 1
                 }}
             />
         );
+        panes.reverse();
 
         const classes = `staticMapZoom ${this.props.reticle ? 'staticMapZoom-reticle' : ''}`;
         const containerAttributes = {
