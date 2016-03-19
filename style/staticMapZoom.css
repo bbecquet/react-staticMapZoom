@@ -11,7 +11,7 @@
     background-size: 100%;
 }
 
-.staticMapZoom-reticle::before {
+.staticMapZoom-reticle::after {
     content: '';
     box-sizing: border-box;
     display: block;
@@ -26,5 +26,4 @@
     border: 2px solid white;
     border-radius: 50%;
     opacity: 0.75;
-    z-index: 100;
 }
