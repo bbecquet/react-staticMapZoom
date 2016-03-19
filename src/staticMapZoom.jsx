@@ -37,12 +37,12 @@ export default class StaticMapZoom extends React.Component {
     buildImageUrls() {
         return this.props.zooms.map((zoom) => {
             const opts = {
-                w: this.props.width,
-                h: this.props.height,
+                zoom,
+                width: this.props.width,
+                height: this.props.height,
                 lat: this.props.center[0],
                 lng: this.props.center[1],
-                z: zoom,
-                key: '[your_key_here]'
+                apiKey: '[your_key_here]'
             };
             return providers[this.props.provider](opts);
         });

@@ -1,19 +1,18 @@
 
 const providers = {
-    google: opts => {
+    google: ({width, height, zoom, lat, lng, apiKey}) => {
         return 'https://maps.googleapis.com/maps/api/staticmap'
-             + `?size=${opts.w}x${opts.h}&zoom=${opts.z}&center=${opts.lat},${opts.lng}`;
+             + `?size=${width}x${height}&zoom=${zoom}&center=${lat},${lng}`;
     },
-    openMapQuest: opts => {
+    openMapQuest: ({width, height, zoom, lat, lng, apiKey}) => {
         return 'http://www.mapquestapi.com/staticmap/v4/getmap'
-             + `?size=${opts.w},${opts.h}`
-             + `&center=${opts.lat},${opts.lng}`
-             + `&key=${opts.key}`;
+             + `?size=${width},${height}&zoom=${zoom}&center=${lat},${lng}`
+             + `&key=${apiKey}`;
     },
-    mapBox: opts => {
+    mapBox: ({width, height, zoom, lat, lng, apiKey}) => {
         return 'https://api.mapbox.com/v4/mapbox.emerald/'
-             + `${opts.lng},${opts.lat},${opts.z}/${opts.w}x${opts.h}@2x.png`
-             + `?access_token=${opts.key}`;
+             + `${lng},${lat},${zoom}/${width}x${height}@2x.png`
+             + `?access_token=${apiKey}`;
     }
 };
 
