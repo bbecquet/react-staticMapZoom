@@ -34,7 +34,6 @@ export default class StaticMapZoom extends React.Component {
     componentWillUnmount() {
     }
 
-    // TODO: move it to providers (?)
     buildImageUrls() {
         return this.props.zooms.map((zoom) => {
             const opts = {
@@ -97,30 +96,21 @@ export default class StaticMapZoom extends React.Component {
                 }}
             />
         );
+
         const classes = `staticMapZoom ${this.props.reticle ? 'staticMapZoom-reticle' : ''}`;
-
-        if (this.props.href) {
-            return <a href={this.props.href}
-                className={classes}
-                ref={(ref) => {this.wrapperElement = ref;}}
-                style={{
-                    height: `${this.props.height}px`,
-                    width: `${this.props.width}px`
-                }}
-            >
-                { panes }
-            </a>;
-        }
-
-        return <div
-            className={classes}
-            ref={(ref) => {this.wrapperElement = ref;}}
-            style={{
+        const containerAttributes = {
+            className: classes,
+            ref: (ref) => {this.wrapperElement = ref;},
+            style: {
                 height: `${this.props.height}px`,
                 width: `${this.props.width}px`
-            }}
-        >
-            { panes }
-        </div>;
+            }
+        };
+
+        if (this.props.href) {
+            return <a href={this.props.href} {...containerAttributes}>{panes}</a>;
+        }
+
+        return <div {...containerAttributes}>{panes}</div>;
     }
 }
