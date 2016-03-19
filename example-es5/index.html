@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Example ES5</title>
+	<link rel="stylesheet" href="css/style.css"/>
+	<script src="http://fb.me/react-0.14.3.js"></script>
+	<script src="http://fb.me/react-dom-0.14.3.js"></script>
+	<script src="../dist/staticMapZoom.js"></script>
+	<script>
+		var createMapZoom = React.createFactory(StaticMapZoom);
+
+		window.onload = function () {
+			ReactDOM.render(createMapZoom({
+				zooms: [1, 10, 20],
+				center: [48.85, 2.35]
+			}), document.getElementById('container'));
+		};
+	</script>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+</html>
