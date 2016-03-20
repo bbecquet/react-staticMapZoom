@@ -169,4 +169,4 @@ StaticMapZoom.defaultProps = {
 };
 exports.default = StaticMapZoom;
 module.exports = exports['default'];
-//# sourceMappingURL=staticMapZoom.js.map
+//# sourceMappingURL=StaticMapZoom.js.map

@@ -1,3 +1,4 @@
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.StaticMapZoom = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -8,7 +9,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = (window.React);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -169,4 +170,49 @@ StaticMapZoom.defaultProps = {
 };
 exports.default = StaticMapZoom;
 module.exports = exports['default'];
-//# sourceMappingURL=staticMapZoom.js.map
+
+},{"./staticMapProviders.js":2}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var providers = {
+    google: function google(_ref) {
+        var width = _ref.width;
+        var height = _ref.height;
+        var zoom = _ref.zoom;
+        var lat = _ref.lat;
+        var lng = _ref.lng;
+        var apiKey = _ref.apiKey;
+
+        return 'https://maps.googleapis.com/maps/api/staticmap' + ('?size=' + width + 'x' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng);
+    },
+    openMapQuest: function openMapQuest(_ref2) {
+        var width = _ref2.width;
+        var height = _ref2.height;
+        var zoom = _ref2.zoom;
+        var lat = _ref2.lat;
+        var lng = _ref2.lng;
+        var apiKey = _ref2.apiKey;
+
+        return 'http://www.mapquestapi.com/staticmap/v4/getmap' + ('?size=' + width + ',' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng) + ('&key=' + apiKey);
+    },
+    mapBox: function mapBox(_ref3) {
+        var width = _ref3.width;
+        var height = _ref3.height;
+        var zoom = _ref3.zoom;
+        var lat = _ref3.lat;
+        var lng = _ref3.lng;
+        var apiKey = _ref3.apiKey;
+
+        return 'https://api.mapbox.com/v4/mapbox.emerald/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x.png') + ('?access_token=' + apiKey);
+    }
+};
+
+exports.default = providers;
+module.exports = exports['default'];
+
+},{}]},{},[1])(1)
+});

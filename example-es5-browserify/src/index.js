@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var StaticMapZoom = require('../../dist/staticMapZoom');
+var StaticMapZoom = require('../../dist/StaticMapZoom');
 var createMapZoom = React.createFactory(StaticMapZoom);
 
 window.onload = function () {

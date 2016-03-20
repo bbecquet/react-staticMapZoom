@@ -5,27 +5,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var providers = {
-    google: function google(opts) {
-        return 'https://maps.googleapis.com/maps/api/staticmap' + ('?size=' + opts.w + 'x' + opts.h + '&zoom=' + opts.z + '&center=' + opts.lat + ',' + opts.lng);
-    },
-    openMapQuest: function openMapQuest(opts) {
-        return 'http://www.mapquestapi.com/staticmap/v4/getmap' + ('?size=' + opts.w + ',' + opts.h) + ('&center=' + opts.lat + ',' + opts.lng) + ('&key=' + opts.key);
-    },
-    mapBox: function mapBox(opts) {
-        return 'https://api.mapbox.com/v4/mapbox.emerald/' + (opts.lng + ',' + opts.lat + ',' + opts.z + '/' + opts.w + 'x' + opts.h + '@2x.png') + ('?access_token=' + opts.key);
-    }
-};
-
-exports.default = providers;
-module.exports = exports['default'];
-
-},{}],2:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -33,9 +13,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _mapProviders = require('./mapProviders.js');
+var _staticMapProviders = require('./staticMapProviders.js');
 
-var _mapProviders2 = _interopRequireDefault(_mapProviders);
+var _staticMapProviders2 = _interopRequireDefault(_staticMapProviders);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67,9 +47,6 @@ var StaticMapZoom = function (_React$Component) {
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {}
-
-        // TODO: move it to providers (?)
-
     }, {
         key: 'buildImageUrls',
         value: function buildImageUrls() {
@@ -77,14 +54,14 @@ var StaticMapZoom = function (_React$Component) {
 
             return this.props.zooms.map(function (zoom) {
                 var opts = {
-                    w: _this2.props.width,
-                    h: _this2.props.height,
+                    zoom: zoom,
+                    width: _this2.props.width,
+                    height: _this2.props.height,
                     lat: _this2.props.center[0],
                     lng: _this2.props.center[1],
-                    z: zoom,
-                    key: '[your_key_here]'
+                    apiKey: _this2.props.apiKey
                 };
-                return _mapProviders2.default[_this2.props.provider](opts);
+                return _staticMapProviders2.default[_this2.props.provider](opts);
             });
         }
     }, {
@@ -131,48 +108,41 @@ var StaticMapZoom = function (_React$Component) {
             var _this4 = this;
 
             var imgUrls = this.buildImageUrls();
-            imgUrls.reverse();
             var panes = imgUrls.map(function (url, i) {
                 return _react2.default.createElement('div', {
                     key: i,
                     className: 'staticMapZoom-zoomPane',
                     style: {
                         backgroundImage: 'url(' + url + ')',
-                        opacity: i > _this4.state.visiblePane ? 0 : 1
+                        opacity: i < _this4.state.visiblePane ? 0 : 1
                     }
                 });
             });
+            panes.reverse();
+
             var classes = 'staticMapZoom ' + (this.props.reticle ? 'staticMapZoom-reticle' : '');
+            var containerAttributes = {
+                className: classes,
+                ref: function ref(_ref) {
+                    _this4.wrapperElement = _ref;
+                },
+                style: {
+                    height: this.props.height + 'px',
+                    width: this.props.width + 'px'
+                }
+            };
 
             if (this.props.href) {
                 return _react2.default.createElement(
                     'a',
-                    { href: this.props.href,
-                        className: classes,
-                        ref: function ref(_ref) {
-                            _this4.wrapperElement = _ref;
-                        },
-                        style: {
-                            height: this.props.height + 'px',
-                            width: this.props.width + 'px'
-                        }
-                    },
+                    _extends({ href: this.props.href }, containerAttributes),
                     panes
                 );
             }
 
             return _react2.default.createElement(
                 'div',
-                {
-                    className: classes,
-                    ref: function ref(_ref2) {
-                        _this4.wrapperElement = _ref2;
-                    },
-                    style: {
-                        height: this.props.height + 'px',
-                        width: this.props.width + 'px'
-                    }
-                },
+                containerAttributes,
                 panes
             );
         }
@@ -188,7 +158,8 @@ StaticMapZoom.propTypes = {
     provider: _react.PropTypes.string,
     reticle: _react.PropTypes.bool,
     height: _react.PropTypes.number,
-    width: _react.PropTypes.number
+    width: _react.PropTypes.number,
+    apiKey: _react.PropTypes.string
 };
 StaticMapZoom.defaultProps = {
     href: null,
@@ -200,10 +171,53 @@ StaticMapZoom.defaultProps = {
 exports.default = StaticMapZoom;
 module.exports = exports['default'];
 
-},{"./mapProviders.js":1,"react":161}],3:[function(require,module,exports){
+},{"./staticMapProviders.js":2,"react":161}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var providers = {
+    google: function google(_ref) {
+        var width = _ref.width;
+        var height = _ref.height;
+        var zoom = _ref.zoom;
+        var lat = _ref.lat;
+        var lng = _ref.lng;
+        var apiKey = _ref.apiKey;
+
+        return 'https://maps.googleapis.com/maps/api/staticmap' + ('?size=' + width + 'x' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng);
+    },
+    openMapQuest: function openMapQuest(_ref2) {
+        var width = _ref2.width;
+        var height = _ref2.height;
+        var zoom = _ref2.zoom;
+        var lat = _ref2.lat;
+        var lng = _ref2.lng;
+        var apiKey = _ref2.apiKey;
+
+        return 'http://www.mapquestapi.com/staticmap/v4/getmap' + ('?size=' + width + ',' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng) + ('&key=' + apiKey);
+    },
+    mapBox: function mapBox(_ref3) {
+        var width = _ref3.width;
+        var height = _ref3.height;
+        var zoom = _ref3.zoom;
+        var lat = _ref3.lat;
+        var lng = _ref3.lng;
+        var apiKey = _ref3.apiKey;
+
+        return 'https://api.mapbox.com/v4/mapbox.emerald/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x.png') + ('?access_token=' + apiKey);
+    }
+};
+
+exports.default = providers;
+module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var StaticMapZoom = require('../../dist/staticMapZoom');
+var StaticMapZoom = require('../../dist/StaticMapZoom');
 var createMapZoom = React.createFactory(StaticMapZoom);
 
 window.onload = function () {
@@ -220,7 +234,7 @@ window.onload = function () {
     }), document.getElementById('container'));
 };
 
-},{"../../dist/staticMapZoom":2,"react":161,"react-dom":5}],4:[function(require,module,exports){
+},{"../../dist/StaticMapZoom":1,"react":161,"react-dom":5}],4:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};

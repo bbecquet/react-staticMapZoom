@@ -11,7 +11,7 @@
   "main": "dist/staticMapZoom.js",
   "scripts": {
     "babel": "babel ./src/ --out-dir ./dist --source-maps --presets es2015,react --plugins babel-plugin-add-module-exports,babel-plugin-transform-class-properties",
-    "browserify": "browserify ./dist/staticMapZoom.js -o ./build/react-staticMapZoom.js --transform browserify-global-shim --standalone StaticMapZoom",
+    "browserify": "browserify ./dist/StaticMapZoom.js -o ./build/react-staticMapZoom.js --transform browserify-global-shim --standalone StaticMapZoom",
     "example-es5-browserify": "browserify ./example-es5-browserify/src/index.js -o ./example-es5-browserify/build/app.js",
     "build": "npm run babel && npm run browserify && npm run example-es5-browserify"
   },
