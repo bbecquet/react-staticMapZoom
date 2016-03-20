@@ -166,7 +166,8 @@ StaticMapZoom.defaultProps = {
     provider: 'google',
     reticle: false,
     height: 250,
-    width: 500
+    width: 500,
+    zooms: [3, 6, 14]
 };
 exports.default = StaticMapZoom;
 module.exports = exports['default'];
@@ -222,10 +223,6 @@ var StaticMapZoom = require('../../dist/StaticMapZoom');
 var createMapZoom = React.createFactory(StaticMapZoom);
 
 window.onload = function () {
-    /*ReactDOM.render(createMapZoom({
-        zooms: [1, 10, 20],
-        center: [48.85, 2.35]
-    }), document.getElementById('container'));*/
     ReactDOM.render(createMapZoom({
         zooms: [1, 8, 16],
         center: [48.85, 2.35],

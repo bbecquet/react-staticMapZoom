@@ -166,7 +166,8 @@ StaticMapZoom.defaultProps = {
     provider: 'google',
     reticle: false,
     height: 250,
-    width: 500
+    width: 500,
+    zooms: [3, 6, 14]
 };
 exports.default = StaticMapZoom;
 module.exports = exports['default'];

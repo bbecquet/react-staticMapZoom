@@ -7,12 +7,22 @@
 	<script src="http://fb.me/react-0.14.3.js"></script>
 	<script src="http://fb.me/react-dom-0.14.3.js"></script>
 	<script src="../build/react-staticMapZoom.js"></script>
+	<style>
+		.mapContainer {
+			margin: 30px 0;
+		}
+
+		.staticMapZoom {
+			border: gray 2px solid;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+	</style>
 	<script>
 		var createMapZoom = React.createFactory(StaticMapZoom);
 
 		window.onload = function () {
 			ReactDOM.render(createMapZoom({
-				zooms: [1, 10, 20],
 				center: [48.85, 2.35],
 				apiKey: 'AIzaSyA8LXDYsjYxG3abTPt5Baf_ITccEIueJNc',
 				width: 300,
@@ -36,8 +46,8 @@
 	</script>
 </head>
 <body>
-	<div id="container1"></div>
-	<div id="container2"></div>
-	<div id="container3"></div>
+	<div id="container1" class="mapContainer"></div>
+	<div id="container2" class="mapContainer"></div>
+	<div id="container3" class="mapContainer"></div>
 </body>
 </html>
