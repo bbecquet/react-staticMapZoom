@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import providers from './mapProviders.js';
+import providers from './staticMapProviders.js';
 
 export default class StaticMapZoom extends React.Component {
     static propTypes = {
