@@ -1,5 +1,5 @@
 
-const providers = {
+export default {
     google: ({width, height, zoom, lat, lng, apiKey}) => {
         return 'https://maps.googleapis.com/maps/api/staticmap'
              + `?size=${width}x${height}&zoom=${zoom}&center=${lat},${lng}`;
@@ -15,5 +15,3 @@ const providers = {
              + `?access_token=${apiKey}`;
     }
 };
-
-export default providers;

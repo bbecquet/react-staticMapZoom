@@ -177,8 +177,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var providers = {
+exports.default = {
     google: function google(_ref) {
         var width = _ref.width;
         var height = _ref.height;
@@ -210,8 +209,6 @@ var providers = {
         return 'https://api.mapbox.com/v4/mapbox.emerald/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x.png') + ('?access_token=' + apiKey);
     }
 };
-
-exports.default = providers;
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
