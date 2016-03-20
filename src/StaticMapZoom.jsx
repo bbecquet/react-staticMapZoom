@@ -65,8 +65,10 @@ export default class StaticMapZoom extends React.Component {
         // levels disappear one by one as the mouse moves closer to the center
         this.wrapperElement.addEventListener('mousemove', e => {
             // find the relative coordinates of the mouse in the widget
-            let relX = e.clientX - this.wrapperElement.offsetLeft;
-            let relY = e.clientY - this.wrapperElement.offsetTop;
+            let relX = e.clientX - this.wrapperElement.offsetLeft
+                + document.body.scrollLeft + document.documentElement.scrollLeft;
+            let relY = e.clientY - this.wrapperElement.offsetTop
+                + document.body.scrollTop + document.documentElement.scrollTop;
             // normalize values so that only the first quadrant has to be tested
             if (relX > width / 2) {
                 relX = width - relX;
