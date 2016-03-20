@@ -13,7 +13,8 @@
     "babel": "babel ./src/ --out-dir ./dist --source-maps --presets es2015,react --plugins babel-plugin-add-module-exports,babel-plugin-transform-class-properties",
     "browserify": "browserify ./dist/StaticMapZoom.js -o ./build/react-staticMapZoom.js --transform browserify-global-shim --standalone StaticMapZoom",
     "example-es5-browserify": "browserify ./example-es5-browserify/src/index.js -o ./example-es5-browserify/build/app.js",
-    "build": "npm run babel && npm run browserify && npm run example-es5-browserify"
+    "build": "npm run babel && npm run browserify && npm run example-es5-browserify",
+    "test": "mocha --compilers js:babel/register test/staticMapZoom.test.js"
   },
   "browserify-global-shim": {
     "react": "React",
@@ -28,10 +29,12 @@
     "babel-preset-react": "^6.5.0",
     "browserify": "^13.0.0",
     "browserify-global-shim": "^1.0.3",
+    "chai": "^3.5.0",
     "enzyme": "^2.0.0",
     "eslint": "^2.4.0",
     "eslint-plugin-react": "^4.0.0",
     "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7"
   },
   "dependencies": {},
