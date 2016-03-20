@@ -84,7 +84,6 @@ var StaticMapZoom = function (_React$Component) {
                 // find the relative coordinates of the mouse in the widget
                 var relX = e.clientX - _this3.wrapperElement.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft;
                 var relY = e.clientY - _this3.wrapperElement.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
-                console.log(e.clientX, e.clientY, _this3.wrapperElement.offsetLeft, _this3.wrapperElement.offsetTop, document.body.scrollLeft, document.body.scrollTop);
                 // normalize values so that only the first quadrant has to be tested
                 if (relX > width / 2) {
                     relX = width - relX;
