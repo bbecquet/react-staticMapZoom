@@ -186,7 +186,11 @@ exports.default = {
         var lng = _ref.lng;
         var apiKey = _ref.apiKey;
 
-        return 'https://maps.googleapis.com/maps/api/staticmap' + ('?size=' + width + 'x' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng);
+        var url = 'https://maps.googleapis.com/maps/api/staticmap' + ('?size=' + width + 'x' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng);
+        if (apiKey) {
+            url += '&key=' + apiKey;
+        }
+        return url;
     },
     openMapQuest: function openMapQuest(_ref2) {
         var width = _ref2.width;

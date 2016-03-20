@@ -1,8 +1,12 @@
 
 export default {
     google: ({width, height, zoom, lat, lng, apiKey}) => {
-        return 'https://maps.googleapis.com/maps/api/staticmap'
+        let url = 'https://maps.googleapis.com/maps/api/staticmap'
              + `?size=${width}x${height}&zoom=${zoom}&center=${lat},${lng}`;
+        if (apiKey) {
+            url += `&key=${apiKey}`;
+        }
+        return url;
     },
     openMapQuest: ({width, height, zoom, lat, lng, apiKey}) => {
         return 'http://www.mapquestapi.com/staticmap/v4/getmap'
