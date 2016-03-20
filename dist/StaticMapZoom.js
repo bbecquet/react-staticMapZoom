@@ -119,9 +119,9 @@ var StaticMapZoom = function (_React$Component) {
             });
             panes.reverse();
 
-            var classes = 'staticMapZoom ' + (this.props.reticle ? 'staticMapZoom-reticle' : '');
+            var containerClasses = 'staticMapZoom ' + (this.props.reticle ? 'staticMapZoom-reticle' : '');
             var containerAttributes = {
-                className: classes,
+                className: containerClasses,
                 ref: function ref(_ref) {
                     _this4.wrapperElement = _ref;
                 },

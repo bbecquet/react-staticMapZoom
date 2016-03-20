@@ -99,9 +99,9 @@ export default class StaticMapZoom extends React.Component {
         );
         panes.reverse();
 
-        const classes = `staticMapZoom ${this.props.reticle ? 'staticMapZoom-reticle' : ''}`;
+        const containerClasses = `staticMapZoom ${this.props.reticle ? 'staticMapZoom-reticle' : ''}`;
         const containerAttributes = {
-            className: classes,
+            className: containerClasses,
             ref: (ref) => {this.wrapperElement = ref;},
             style: {
                 height: `${this.props.height}px`,
