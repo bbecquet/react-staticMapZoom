@@ -198,7 +198,7 @@ exports.default = {
 
         return 'http://www.mapquestapi.com/staticmap/v4/getmap' + ('?size=' + width + ',' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng) + ('&key=' + apiKey);
     },
-    mapBox: function mapBox(_ref3) {
+    mapbox: function mapbox(_ref3) {
         var width = _ref3.width;
         var height = _ref3.height;
         var zoom = _ref3.zoom;
@@ -206,7 +206,7 @@ exports.default = {
         var lng = _ref3.lng;
         var apiKey = _ref3.apiKey;
 
-        return 'https://api.mapbox.com/v4/mapbox.emerald/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x.png') + ('?access_token=' + apiKey);
+        return 'https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x') + ('?access_token=' + apiKey);
     }
 };
 module.exports = exports['default'];

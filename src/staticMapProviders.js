@@ -9,9 +9,9 @@ export default {
              + `?size=${width},${height}&zoom=${zoom}&center=${lat},${lng}`
              + `&key=${apiKey}`;
     },
-    mapBox: ({width, height, zoom, lat, lng, apiKey}) => {
-        return 'https://api.mapbox.com/v4/mapbox.emerald/'
-             + `${lng},${lat},${zoom}/${width}x${height}@2x.png`
+    mapbox: ({width, height, zoom, lat, lng, apiKey}) => {
+        return 'https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/'
+             + `${lng},${lat},${zoom}/${width}x${height}@2x`
              + `?access_token=${apiKey}`;
     }
 };
