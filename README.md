@@ -2,7 +2,7 @@
 
 A React component which mimics the auto zoom mini-map found on geo-tagged photos Flickr pages.
 
-[See examples](http://bbecquet.github.io/staticMapZoom-react/example-es5)
+[See examples](http://bbecquet.github.io/react-staticMapZoom/example-es5)
 
 Size, center, zoom levels and map provider are parametrizable.
 

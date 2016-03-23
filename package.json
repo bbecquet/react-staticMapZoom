@@ -1,5 +1,5 @@
 {
-  "name": "staticmapzoom-react",
+  "name": "react-staticmapzoom",
   "version": "0.0.1",
   "author": {
     "name": "Benjamin Becquet",
@@ -7,7 +7,7 @@
     "url": "http://bbecquet.net"
   },
   "description": "A component to create a simple, static, zoomable map similar to the one on Flickr photo pages",
-  "repository": "bbecquet/staticMapZoom-react",
+  "repository": "bbecquet/react-staticMapZoom",
   "main": "dist/staticMapZoom.js",
   "scripts": {
     "babel": "babel ./src/ --out-dir ./dist --source-maps --presets es2015,react --plugins babel-plugin-add-module-exports,babel-plugin-transform-class-properties",
