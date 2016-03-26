@@ -152,21 +152,21 @@ var StaticMapZoom = function (_React$Component) {
 
 StaticMapZoom.propTypes = {
     center: _react.PropTypes.array.isRequired,
-    zooms: _react.PropTypes.array.isRequired,
-    href: _react.PropTypes.string,
+    zooms: _react.PropTypes.array,
     provider: _react.PropTypes.string,
-    reticle: _react.PropTypes.bool,
-    height: _react.PropTypes.number,
+    apiKey: _react.PropTypes.string,
     width: _react.PropTypes.number,
-    apiKey: _react.PropTypes.string
+    height: _react.PropTypes.number,
+    href: _react.PropTypes.string,
+    reticle: _react.PropTypes.bool
 };
 StaticMapZoom.defaultProps = {
-    href: null,
+    zooms: [3, 6, 14],
     provider: 'google',
-    reticle: false,
-    height: 250,
     width: 500,
-    zooms: [3, 6, 14]
+    height: 250,
+    href: null,
+    reticle: false
 };
 exports.default = StaticMapZoom;
 module.exports = exports['default'];

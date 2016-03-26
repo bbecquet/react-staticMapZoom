@@ -4,22 +4,22 @@ import providers from './staticMapProviders.js';
 export default class StaticMapZoom extends React.Component {
     static propTypes = {
         center: PropTypes.array.isRequired,
-        zooms: PropTypes.array.isRequired,
-        href: PropTypes.string,
+        zooms: PropTypes.array,
         provider: PropTypes.string,
-        reticle: PropTypes.bool,
-        height: PropTypes.number,
+        apiKey: PropTypes.string,
         width: PropTypes.number,
-        apiKey: PropTypes.string
+        height: PropTypes.number,
+        href: PropTypes.string,
+        reticle: PropTypes.bool
     };
 
     static defaultProps = {
-        href: null,
+        zooms: [3, 6, 14],
         provider: 'google',
-        reticle: false,
-        height: 250,
         width: 500,
-        zooms: [3, 6, 14]
+        height: 250,
+        href: null,
+        reticle: false
     };
 
     constructor(props) {
