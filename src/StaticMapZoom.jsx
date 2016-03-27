@@ -68,7 +68,7 @@ export default class StaticMapZoom extends React.Component {
             var rect = this.wrapperElement.getBoundingClientRect();
             let relX = e.clientX - rect.left - this.wrapperElement.clientLeft;
             let relY = e.clientY - rect.top - this.wrapperElement.clientTop;
-            
+
             // normalize values so that only the first quadrant has to be tested
             if (relX > width / 2) {
                 relX = width - relX;
