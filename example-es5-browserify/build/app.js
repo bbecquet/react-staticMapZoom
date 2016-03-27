@@ -83,8 +83,10 @@ var StaticMapZoom = function (_React$Component) {
             // levels disappear one by one as the mouse moves closer to the center
             this.wrapperElement.addEventListener('mousemove', function (e) {
                 // find the relative coordinates of the mouse in the widget
-                var relX = e.clientX - _this3.wrapperElement.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft;
-                var relY = e.clientY - _this3.wrapperElement.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
+                var rect = _this3.wrapperElement.getBoundingClientRect();
+                var relX = e.clientX - rect.left - _this3.wrapperElement.clientLeft;
+                var relY = e.clientY - rect.top - _this3.wrapperElement.clientTop;
+
                 // normalize values so that only the first quadrant has to be tested
                 if (relX > width / 2) {
                     relX = width - relX;
