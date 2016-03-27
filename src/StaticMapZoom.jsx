@@ -78,7 +78,9 @@ export default class StaticMapZoom extends React.Component {
             }
             // find the zoom, by finding the inner-most zone the cursor is in
             const pane = Math.min(Math.floor(relX / hSteps), Math.floor(relY / vSteps)) + 1;
-            this.setState({ visiblePane: pane });
+            if (pane !== this.state.visiblePane) {
+                this.setState({ visiblePane: pane });
+            }
         });
         // the first level will disappear as soon as the mouse enters the element,
         // make it reappear when it leaves
