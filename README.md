@@ -5,6 +5,10 @@ A React component which mimics the auto zoom mini-map found on geo-tagged photos
 
 [See examples](http://bbecquet.github.io/react-staticMapZoom/example-es5)
 
+```bash
+npm install react-staticmapzoom
+```
+
 ## PropTypes
 
 ```javascript
