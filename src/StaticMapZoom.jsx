@@ -3,9 +3,12 @@ import providers from './staticMapProviders.js';
 
 export default class StaticMapZoom extends React.Component {
     static propTypes = {
-        center: PropTypes.array.isRequired,
-        zooms: PropTypes.array,
-        provider: PropTypes.string,
+        center: PropTypes.shape({
+            lat: PropTypes.number.isRequired,
+            lng: PropTypes.number.isRequired
+        }).isRequired,
+        zooms: PropTypes.arrayOf(PropTypes.number),
+        provider: PropTypes.oneOf(Object.keys(providers)),
         apiKey: PropTypes.string,
         width: PropTypes.number,
         height: PropTypes.number,
@@ -42,8 +45,8 @@ export default class StaticMapZoom extends React.Component {
                 zoom,
                 width: this.props.width,
                 height: this.props.height,
-                lat: this.props.center[0],
-                lng: this.props.center[1],
+                lat: this.props.center.lat,
+                lng: this.props.center.lng,
                 apiKey: this.props.apiKey
             };
             return providers[this.props.provider](opts);

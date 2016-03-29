@@ -6,7 +6,10 @@ var createMapZoom = React.createFactory(StaticMapZoom);
 window.onload = function () {
     ReactDOM.render(createMapZoom({
         zooms: [1, 8, 16],
-        center: [48.85, 2.35],
+        center: {
+            lat: 48.85,
+            lng: 2.35
+        },
         width: 300,
         height: 150,
         reticle: true

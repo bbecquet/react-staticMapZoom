@@ -23,7 +23,10 @@
 
 		window.onload = function () {
 			ReactDOM.render(createMapZoom({
-				center: [48.85, 2.35],
+				center: {
+					lat: 48.85,
+					lng: 2.35
+				},
 				apiKey: 'AIzaSyA8LXDYsjYxG3abTPt5Baf_ITccEIueJNc',
 				width: 300,
 				height: 180,
@@ -31,7 +34,10 @@
 
 			ReactDOM.render(createMapZoom({
 				zooms: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-				center: [48.85, 2.35],
+				center: {
+					lat: 48.85,
+					lng: 2.35
+				},
 				provider: 'mapbox',
 				apiKey: 'pk.eyJ1IjoiYmJlY3F1ZXQiLCJhIjoieGZqTzZsZyJ9.boUXwiILkBMs4SGBwQ1vWQ',
 				reticle: true
@@ -39,7 +45,10 @@
 
 			ReactDOM.render(createMapZoom({
 				zooms: [8, 12, 16, 20],
-				center: [48.85, 2.35],
+				center: {
+					lat: 48.85,
+					lng: 2.35
+				},
 				href: 'http://paris.fr'
 			}), document.getElementById('container3'));
 		};

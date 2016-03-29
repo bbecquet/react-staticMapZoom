@@ -56,8 +56,8 @@ var StaticMapZoom = function (_React$Component) {
                     zoom: zoom,
                     width: _this2.props.width,
                     height: _this2.props.height,
-                    lat: _this2.props.center[0],
-                    lng: _this2.props.center[1],
+                    lat: _this2.props.center.lat,
+                    lng: _this2.props.center.lng,
                     apiKey: _this2.props.apiKey
                 };
                 return _staticMapProviders2.default[_this2.props.provider](opts);
@@ -155,9 +155,12 @@ var StaticMapZoom = function (_React$Component) {
 }(_react2.default.Component);
 
 StaticMapZoom.propTypes = {
-    center: _react.PropTypes.array.isRequired,
-    zooms: _react.PropTypes.array,
-    provider: _react.PropTypes.string,
+    center: _react.PropTypes.shape({
+        lat: _react.PropTypes.number.isRequired,
+        lng: _react.PropTypes.number.isRequired
+    }).isRequired,
+    zooms: _react.PropTypes.arrayOf(_react.PropTypes.number),
+    provider: _react.PropTypes.oneOf(Object.keys(_staticMapProviders2.default)),
     apiKey: _react.PropTypes.string,
     width: _react.PropTypes.number,
     height: _react.PropTypes.number,
