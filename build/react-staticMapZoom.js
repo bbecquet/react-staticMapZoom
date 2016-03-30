@@ -25,6 +25,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var containerStyle = {
+    display: 'block',
+    position: 'relative'
+};
+
+var paneStyle = {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    backgroundSize: '100%'
+};
+
+//transition: 'opacity 0.2s ease'
+
 var StaticMapZoom = function (_React$Component) {
     _inherits(StaticMapZoom, _React$Component);
 
@@ -116,10 +130,10 @@ var StaticMapZoom = function (_React$Component) {
                 return _react2.default.createElement('div', {
                     key: i,
                     className: 'staticMapZoom-zoomPane',
-                    style: {
+                    style: Object.assign({
                         backgroundImage: 'url(' + url + ')',
                         opacity: i < _this4.state.visiblePane ? 0 : 1
-                    }
+                    }, paneStyle)
                 });
             });
             panes.reverse();
@@ -130,10 +144,10 @@ var StaticMapZoom = function (_React$Component) {
                 ref: function ref(_ref) {
                     _this4.wrapperElement = _ref;
                 },
-                style: {
+                style: Object.assign({
                     height: this.props.height + 'px',
                     width: this.props.width + 'px'
-                }
+                }, containerStyle)
             };
 
             if (this.props.href) {

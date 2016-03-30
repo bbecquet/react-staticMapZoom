@@ -1,6 +1,18 @@
 import React, { PropTypes } from 'react';
 import providers from './staticMapProviders.js';
 
+const containerStyle = {
+    display: 'block',
+    position: 'relative'
+};
+
+const paneStyle = {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    backgroundSize: '100%'
+};
+
 export default class StaticMapZoom extends React.Component {
     static propTypes = {
         center: PropTypes.shape({
@@ -98,10 +110,10 @@ export default class StaticMapZoom extends React.Component {
             <div
                 key={i}
                 className="staticMapZoom-zoomPane"
-                style={{
+                style={Object.assign({
                     backgroundImage: `url(${url})`,
                     opacity: (i < this.state.visiblePane) ? 0 : 1
-                }}
+                }, paneStyle)}
             />
         );
         panes.reverse();
@@ -110,10 +122,10 @@ export default class StaticMapZoom extends React.Component {
         const containerAttributes = {
             className: containerClasses,
             ref: (ref) => {this.wrapperElement = ref;},
-            style: {
+            style: Object.assign({
                 height: `${this.props.height}px`,
                 width: `${this.props.width}px`
-            }
+            }, containerStyle)
         };
 
         if (this.props.href) {
