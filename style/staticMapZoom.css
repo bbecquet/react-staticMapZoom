@@ -6,14 +6,12 @@
 .staticMapZoom-reticle::after {
     content: '';
     box-sizing: border-box;
-    display: block;
     width: 20px;
     height: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -10px;
-    margin-left: -10px;
+    transform: translate(-50%, -50%);
     background-color: silver;
     border: 2px solid white;
     border-radius: 50%;
