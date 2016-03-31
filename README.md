@@ -34,3 +34,9 @@ npm install react-staticmapzoom
     reticle: PropTypes.bool
 }
 ```
+
+## API limitations
+
+Depending on the provider you use, different API limits may apply, which may result in broken images. It's especially true for the maximum supported zoom level and the maximum image sizes. Also, usage rate limits may be enforced.
+
+Please refer directly to the API documentation of your chosen provider for more information.
