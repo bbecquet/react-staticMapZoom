@@ -21,7 +21,7 @@ npm install react-staticmapzoom
     // Zoom levels, as integers. Default: [3, 6, 14] (Flickr setting).
     zooms: PropTypes.arrayOf(PropTypes.number),
     // Provider string. Default: 'google'.
-    provider: PropTypes.oneOf(['google', 'openMapQuest', 'mapbox']),
+    provider: PropTypes.oneOf(['google', 'openMapQuest', 'mapbox', 'yandex']),
     // Provider-specific API key or token, if needed. Consult the provider's doc.
     apiKey: PropTypes.string,
     // Width of the component, in pixels. Default: 250.
