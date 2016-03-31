@@ -37,6 +37,15 @@ exports.default = {
         var apiKey = _ref3.apiKey;
 
         return 'https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x') + ('?access_token=' + apiKey);
+    },
+    yandex: function yandex(_ref4) {
+        var width = _ref4.width;
+        var height = _ref4.height;
+        var zoom = _ref4.zoom;
+        var lat = _ref4.lat;
+        var lng = _ref4.lng;
+
+        return 'http://static-maps.yandex.ru/1.x/?lang=en-US&l=map' + ('&ll=' + lng + ',' + lat + '&z=' + zoom + '&size=' + width + ',' + height);
     }
 };
 module.exports = exports['default'];

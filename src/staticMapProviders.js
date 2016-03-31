@@ -17,5 +17,9 @@ export default {
         return 'https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/'
              + `${lng},${lat},${zoom}/${width}x${height}@2x`
              + `?access_token=${apiKey}`;
+    },
+    yandex: ({width, height, zoom, lat, lng}) => {
+        return 'http://static-maps.yandex.ru/1.x/?lang=en-US&l=map'
+             + `&ll=${lng},${lat}&z=${zoom}&size=${width},${height}`;
     }
 };

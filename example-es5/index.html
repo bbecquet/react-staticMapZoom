@@ -51,6 +51,15 @@
 				},
 				href: 'http://paris.fr'
 			}), document.getElementById('container3'));
+
+			ReactDOM.render(createMapZoom({
+				zooms: [7, 12, 17],
+				center: {
+					lat: 48.85,
+					lng: 2.35
+				},
+				provider: 'yandex'
+			}), document.getElementById('container4'));
 		};
 	</script>
 </head>
@@ -58,5 +67,6 @@
 	<div id="container1" class="mapContainer"></div>
 	<div id="container2" class="mapContainer"></div>
 	<div id="container3" class="mapContainer"></div>
+	<div id="container4" class="mapContainer"></div>
 </body>
 </html>

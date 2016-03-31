@@ -36,8 +36,6 @@ var paneStyle = {
     backgroundSize: '100%'
 };
 
-//transition: 'opacity 0.2s ease'
-
 var StaticMapZoom = function (_React$Component) {
     _inherits(StaticMapZoom, _React$Component);
 
