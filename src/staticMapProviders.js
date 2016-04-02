@@ -8,6 +8,10 @@ export default {
         }
         return url;
     },
+    bing: ({width, height, zoom, lat, lng, apiKey}) => {
+        return 'http://dev.virtualearth.net/REST/V1/Imagery/Map/Road/'
+             + `${lat},${lng}/${zoom}?mapSize=${width},${height}&key=${apiKey}`;
+    },
     openMapQuest: ({width, height, zoom, lat, lng, apiKey}) => {
         return 'http://www.mapquestapi.com/staticmap/v4/getmap'
              + `?size=${width},${height}&zoom=${zoom}&center=${lat},${lng}`

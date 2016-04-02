@@ -18,7 +18,7 @@ exports.default = {
         }
         return url;
     },
-    openMapQuest: function openMapQuest(_ref2) {
+    bing: function bing(_ref2) {
         var width = _ref2.width;
         var height = _ref2.height;
         var zoom = _ref2.zoom;
@@ -26,9 +26,9 @@ exports.default = {
         var lng = _ref2.lng;
         var apiKey = _ref2.apiKey;
 
-        return 'http://www.mapquestapi.com/staticmap/v4/getmap' + ('?size=' + width + ',' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng) + ('&key=' + apiKey);
+        return 'http://dev.virtualearth.net/REST/V1/Imagery/Map/Road/' + (lat + ',' + lng + '/' + zoom + '?mapSize=' + width + ',' + height + '&key=' + apiKey);
     },
-    mapbox: function mapbox(_ref3) {
+    openMapQuest: function openMapQuest(_ref3) {
         var width = _ref3.width;
         var height = _ref3.height;
         var zoom = _ref3.zoom;
@@ -36,14 +36,24 @@ exports.default = {
         var lng = _ref3.lng;
         var apiKey = _ref3.apiKey;
 
-        return 'https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x') + ('?access_token=' + apiKey);
+        return 'http://www.mapquestapi.com/staticmap/v4/getmap' + ('?size=' + width + ',' + height + '&zoom=' + zoom + '&center=' + lat + ',' + lng) + ('&key=' + apiKey);
     },
-    yandex: function yandex(_ref4) {
+    mapbox: function mapbox(_ref4) {
         var width = _ref4.width;
         var height = _ref4.height;
         var zoom = _ref4.zoom;
         var lat = _ref4.lat;
         var lng = _ref4.lng;
+        var apiKey = _ref4.apiKey;
+
+        return 'https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + (lng + ',' + lat + ',' + zoom + '/' + width + 'x' + height + '@2x') + ('?access_token=' + apiKey);
+    },
+    yandex: function yandex(_ref5) {
+        var width = _ref5.width;
+        var height = _ref5.height;
+        var zoom = _ref5.zoom;
+        var lat = _ref5.lat;
+        var lng = _ref5.lng;
 
         return 'http://static-maps.yandex.ru/1.x/?lang=en-US&l=map' + ('&ll=' + lng + ',' + lat + '&z=' + zoom + '&size=' + width + ',' + height);
     }
