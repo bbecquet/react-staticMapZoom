@@ -13,11 +13,17 @@ var _react = (window.React);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames2 = require('classnames');
+
+var _classnames3 = _interopRequireDefault(_classnames2);
+
 var _staticMapProviders = require('./staticMapProviders.js');
 
 var _staticMapProviders2 = _interopRequireDefault(_staticMapProviders);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -125,12 +131,17 @@ var StaticMapZoom = function (_React$Component) {
 
             var imgUrls = this.buildImageUrls();
             var panes = imgUrls.map(function (url, i) {
+                var _classnames;
+
+                var translateZ = i == _this4.state.visiblePane ? 'floor' : i < _this4.state.visiblePane ? 'up' : 'down';
+                var classNames = (0, _classnames3.default)((_classnames = {
+                    'staticMapZoom-zoomPane': true
+                }, _defineProperty(_classnames, 'translateZ--' + translateZ, true), _defineProperty(_classnames, 'opacified', !(i < _this4.state.visiblePane)), _classnames));
                 return _react2.default.createElement('div', {
                     key: i,
-                    className: 'staticMapZoom-zoomPane',
+                    className: classNames,
                     style: Object.assign({
-                        backgroundImage: 'url(' + url + ')',
-                        opacity: i < _this4.state.visiblePane ? 0 : 1
+                        backgroundImage: 'url(' + url + ')'
                     }, paneStyle)
                 });
             });
@@ -191,7 +202,7 @@ StaticMapZoom.defaultProps = {
 exports.default = StaticMapZoom;
 module.exports = exports['default'];
 
-},{"./staticMapProviders.js":2}],2:[function(require,module,exports){
+},{"./staticMapProviders.js":2,"classnames":3}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -253,6 +264,56 @@ exports.default = {
     }
 };
 module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
+/*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(null, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+}());
 
 },{}]},{},[1])(1)
 });

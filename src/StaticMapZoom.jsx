@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 import providers from './staticMapProviders.js';
 
 const containerStyle = {
@@ -106,16 +107,21 @@ export default class StaticMapZoom extends React.Component {
 
     render() {
         const imgUrls = this.buildImageUrls();
-        const panes = imgUrls.map((url, i) =>
-            <div
+        const panes = imgUrls.map((url, i) => {
+            const translateZ = (i == this.state.visiblePane) ? 'floor' : (i < this.state.visiblePane) ? 'up' : 'down';
+            const classNames = classnames({
+                'staticMapZoom-zoomPane': true,
+                [`translateZ--${translateZ}`]: true,
+                'opacified': !(i < this.state.visiblePane)
+            });
+            return <div
                 key={i}
-                className="staticMapZoom-zoomPane"
+                className={classNames}
                 style={Object.assign({
-                    backgroundImage: `url(${url})`,
-                    opacity: (i < this.state.visiblePane) ? 0 : 1
+                    backgroundImage: `url(${url})`
                 }, paneStyle)}
             />
-        );
+        });
         panes.reverse();
 
         const containerClasses = `staticMapZoom ${this.props.reticle ? 'staticMapZoom-reticle' : ''}`;
