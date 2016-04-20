@@ -30,6 +30,7 @@
     "browserify": "^13.0.0",
     "browserify-global-shim": "^1.0.3",
     "chai": "^3.5.0",
+    "classnames": "^2.2.3",
     "enzyme": "^2.0.0",
     "eslint": "^2.4.0",
     "eslint-plugin-react": "^4.0.0",

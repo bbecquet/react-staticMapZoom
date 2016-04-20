@@ -1,6 +1,21 @@
 
 .staticMapZoom-zoomPane {
-    transition: opacity 0.2s ease;
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+}
+.opacified {
+    opacity: 1;
+}
+.translateZ--floor {
+    transform: perspective(500px) translateZ(0);
+}
+.translateZ--down {
+
+    transform: perspective(500px) translateZ(-100px);
+}
+.translateZ--up {
+    transition-duration: .3s;
+    transform: perspective(500px) translateZ(250px);
 }
 
 .staticMapZoom-reticle::after {
